@@ -1,15 +1,3 @@
-# TODO
-#  - redo names.json to large block of text [x]
-#  - add functionality to:
-#  filter short words in json [x]
-#  pick words of specified lengths in json [x]
-#  randomly add a random amount of numbers/letters to beginning AND/OR end of picked word (Looks more natural just at end ) [x]
-#   (alternately, do if word is x length, only add to end, y length add to beginning, z length both (scrapped)
-#   with selection of what is added being the random aspect. See results?)
-#  - pick between 5 or so email suffix choices for each generated selection [x]
-#  - generate a much stronger password - use same process as username generation, then reverse? [] **in progress**
-#  - output to file [x]
-
 # Importing
 import requests
 import os
@@ -39,15 +27,21 @@ extra_length = [0, 1, 2, 3, 4]
 # list of text to act as the email base value.
 email_text = json.loads(open('longest_text.json').read())
 
+# open output.txt in append mode.
 output_file = open('output.txt', 'a')
 
 for email_data in email_text:
+
+    # additional values for randomly adding a second word to email.
+    name_random = ["", random.choice(email_text), ""]
+
     # take a random amount of digits, at a random length between 0 and 4.
-    name_extra = ''.join(random.choice(string.digits)
-                         for i in range(random.choice(extra_length)))
+    name_digits = ''.join(random.choice(string.digits)
+                          for i in range(random.choice(extra_length)))
 
     # lowercase values from email_text + random digits + random choice of email suffix.
-    username = email_data.lower() + name_extra + random.choice(email_list)
+    username = email_data.lower() + random.choice(name_random) + \
+        name_digits + random.choice(email_list)
 
     # random selection of upper & lower case characters/digits/special characters at a length of 6-12.
     password = ''.join(random.choice(chars)
@@ -64,5 +58,3 @@ for email_data in email_text:
     output_file.write('\"Username:\" \'% s\' \"Password:\" \'% s\' \n' %
                       (username, password))
     print('Username: %s Password: %s' % (username, password))
-
-# print(output_file)
