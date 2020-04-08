@@ -25,6 +25,8 @@ extra_length = [0, 1, 2, 3, 4]
 # url = '#'
 
 # list of text to act as the email base value.
+# can change to short_text, medium_text, long_text, or longest_text
+# will create 300, 1750, 7,500 or 100,000 results
 email_text = json.loads(open('longest_text.json').read())
 
 # open output.txt in append mode.
