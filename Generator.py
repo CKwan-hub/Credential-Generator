@@ -6,7 +6,7 @@ import string
 import json
 
 # string of ascii letters in both upppercase & lowercase + string of digits  + spec characters
-chars = string.ascii_letters + string.digits + '!@#$%^&*()'
+chars = string.ascii_letters + string.digits + '!?@#$%&*'
 
 # seed basis for random numbers
 random.seed = (os.urandom(1024))
@@ -21,12 +21,10 @@ password_length = [6, 7, 8, 9, 10, 11, 12]
 # choices for generated extra email numbers length.
 extra_length = [0, 1, 2, 3, 4]
 
-# url to which the data will be sent.
+# url to which the data can be sent.
 # url = '#'
 
 # list of text to act as the email base value.
-# can change to short_text, medium_text, long_text, or longest_text
-# will create 300, 1750, 7,500 or 100,000 results
 email_text = json.loads(open('medium_text.json').read())
 
 # open output.txt in append mode.
