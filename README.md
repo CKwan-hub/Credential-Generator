@@ -45,6 +45,9 @@ Additional generations will add to the output file if longer list of results are
 The four included JSON files are compiled from literature of various lengths. 
 Default is set to medium.
 
+To change the output length and selection, change the following field to any of the JSON files:
+`email_text = json.loads(open('medium_text.json').read())`
+
 - "short_text.json" will output ~300 results.
 - "medium_text.json" will output ~1,750 results. 
 - "long_text.json" will output ~7,500 results.
